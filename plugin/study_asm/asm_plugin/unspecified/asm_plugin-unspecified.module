@@ -38,11 +38,11 @@
         {
           "name": "asm_plugin-unspecified.jar",
           "url": "asm_plugin-unspecified.jar",
-          "size": 11576,
-          "sha512": "1df60d978cc9afcca4d02fdcf0f18ceb635c246a69d272a47600485dd25da4647f794df68b62e01be907331ee12286556570463927b87e8efa703c8f9537a511",
-          "sha256": "646d33b60af584146fcb5ea12a24273f94ea978ea1e125324255ef24b8531188",
-          "sha1": "bcd05efdc02cbf5abc11b05fdd67ee386bd108f2",
-          "md5": "bbd749211298f1dae7f6806e6a5cbe4e"
+          "size": 11565,
+          "sha512": "c9fe75722183e009093deb9c7ef39160d95cffa09261112aa0da5fe048c8585d2aceb3100ba73607bcdec4acf8c7881cf41c21fc5009a1c57ace34f64da74801",
+          "sha256": "e6b8f4d19662d3dfb0f1214a6a470b86043ff3b9f8e3f524c5a1d1a4cc21cbef",
+          "sha1": "a0bcd707a74702ea1e14e690296ba232953b25df",
+          "md5": "bc8ae699671b3b8f8c8a36fff7fec59a"
         }
       ]
     },
@@ -73,6 +73,13 @@
           }
         },
         {
+          "group": "org.ow2.asm",
+          "module": "asm-commons",
+          "version": {
+            "requires": "9.4"
+          }
+        },
+        {
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-stdlib-jdk8",
           "version": {
@@ -84,11 +91,11 @@
         {
           "name": "asm_plugin-unspecified.jar",
           "url": "asm_plugin-unspecified.jar",
-          "size": 11576,
-          "sha512": "1df60d978cc9afcca4d02fdcf0f18ceb635c246a69d272a47600485dd25da4647f794df68b62e01be907331ee12286556570463927b87e8efa703c8f9537a511",
-          "sha256": "646d33b60af584146fcb5ea12a24273f94ea978ea1e125324255ef24b8531188",
-          "sha1": "bcd05efdc02cbf5abc11b05fdd67ee386bd108f2",
-          "md5": "bbd749211298f1dae7f6806e6a5cbe4e"
+          "size": 11565,
+          "sha512": "c9fe75722183e009093deb9c7ef39160d95cffa09261112aa0da5fe048c8585d2aceb3100ba73607bcdec4acf8c7881cf41c21fc5009a1c57ace34f64da74801",
+          "sha256": "e6b8f4d19662d3dfb0f1214a6a470b86043ff3b9f8e3f524c5a1d1a4cc21cbef",
+          "sha1": "a0bcd707a74702ea1e14e690296ba232953b25df",
+          "md5": "bc8ae699671b3b8f8c8a36fff7fec59a"
         }
       ]
     }

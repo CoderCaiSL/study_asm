@@ -1,10 +1,10 @@
 package com.caisl.asm_plugin;
 
-import org.gradle.internal.impldep.org.objectweb.asm.ClassVisitor;
-import org.gradle.internal.impldep.org.objectweb.asm.MethodVisitor;
-import org.gradle.internal.impldep.org.objectweb.asm.Opcodes;
-import org.gradle.internal.impldep.org.objectweb.asm.commons.AdviceAdapter;
 
+import groovyjarjarasm.asm.Opcodes;
+import jdk.internal.org.objectweb.asm.ClassVisitor;
+import jdk.internal.org.objectweb.asm.MethodVisitor;
+import jdk.internal.org.objectweb.asm.commons.AdviceAdapter;
 
 /**
  * 对继承自AppCompatActivity的Activity进行插桩
