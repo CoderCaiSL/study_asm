@@ -36,13 +36,13 @@
       ],
       "files": [
         {
-          "name": "asm_plugin-unspecified.jar",
-          "url": "asm_plugin-unspecified.jar",
-          "size": 11576,
-          "sha512": "1df60d978cc9afcca4d02fdcf0f18ceb635c246a69d272a47600485dd25da4647f794df68b62e01be907331ee12286556570463927b87e8efa703c8f9537a511",
-          "sha256": "646d33b60af584146fcb5ea12a24273f94ea978ea1e125324255ef24b8531188",
-          "sha1": "bcd05efdc02cbf5abc11b05fdd67ee386bd108f2",
-          "md5": "bbd749211298f1dae7f6806e6a5cbe4e"
+          "name": "asm_plugin-1.0.5.jar",
+          "url": "asm_plugin-1.0.5.jar",
+          "size": 11568,
+          "sha512": "ed45dab7a6bac778b3c678d2dac1902dd4c73e2cdbc9a447a1134e6f53f338cf364da1945c995d4c774c5d4f05615f98e2571e21c735267bb75d9d3921150612",
+          "sha256": "30f41edfe1ab26c4be3e147a4c64f7082f55119ff6d1a3aa72a31cff3a5dd6a0",
+          "sha1": "cb0cc889ce769b9bd6058acd7d6d7e963c364a2a",
+          "md5": "0f7e07f4284c69b839a850949f4182a4"
         }
       ]
     },
@@ -82,13 +82,13 @@
       ],
       "files": [
         {
-          "name": "asm_plugin-unspecified.jar",
-          "url": "asm_plugin-unspecified.jar",
-          "size": 11576,
-          "sha512": "1df60d978cc9afcca4d02fdcf0f18ceb635c246a69d272a47600485dd25da4647f794df68b62e01be907331ee12286556570463927b87e8efa703c8f9537a511",
-          "sha256": "646d33b60af584146fcb5ea12a24273f94ea978ea1e125324255ef24b8531188",
-          "sha1": "bcd05efdc02cbf5abc11b05fdd67ee386bd108f2",
-          "md5": "bbd749211298f1dae7f6806e6a5cbe4e"
+          "name": "asm_plugin-1.0.5.jar",
+          "url": "asm_plugin-1.0.5.jar",
+          "size": 11568,
+          "sha512": "ed45dab7a6bac778b3c678d2dac1902dd4c73e2cdbc9a447a1134e6f53f338cf364da1945c995d4c774c5d4f05615f98e2571e21c735267bb75d9d3921150612",
+          "sha256": "30f41edfe1ab26c4be3e147a4c64f7082f55119ff6d1a3aa72a31cff3a5dd6a0",
+          "sha1": "cb0cc889ce769b9bd6058acd7d6d7e963c364a2a",
+          "md5": "0f7e07f4284c69b839a850949f4182a4"
         }
       ]
     }

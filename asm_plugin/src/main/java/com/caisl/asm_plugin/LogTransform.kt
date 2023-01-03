@@ -2,9 +2,9 @@ package com.caisl.asm_plugin
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
-import org.apache.commons.io.FileUtils
-import org.objectweb.asm.ClassReader
-import org.objectweb.asm.ClassWriter
+import org.gradle.internal.impldep.org.apache.commons.io.FileUtils
+import org.gradle.internal.impldep.org.objectweb.asm.ClassReader
+import org.gradle.internal.impldep.org.objectweb.asm.ClassWriter
 import java.io.File
 import java.io.FileOutputStream
 
@@ -65,10 +65,10 @@ class LogTransform : Transform() {
     private fun processJarInput(jarInput: JarInput, outputProvider: TransformOutputProvider?, isIncremental: Boolean) {
 
         var dest = outputProvider?.getContentLocation(
-                jarInput.file.absolutePath,
-                jarInput.contentTypes,
-                jarInput.scopes,
-                Format.JAR)
+            jarInput.file.absolutePath,
+            jarInput.contentTypes,
+            jarInput.scopes,
+            Format.JAR)
         if (isIncremental) {
             //处理增量编译
             processJarInputIncremental(jarInput, dest)
@@ -195,10 +195,10 @@ class LogTransform : Transform() {
     //============================================================文件及文件夹修改总入口======================================================================
     private fun processDirectoryInput(directoryInput: DirectoryInput, outputProvider: TransformOutputProvider, isIncremental: Boolean) {
         var dest = outputProvider.getContentLocation(
-                directoryInput.file.absolutePath,
-                directoryInput.contentTypes,
-                directoryInput.scopes,
-                Format.DIRECTORY)
+            directoryInput.file.absolutePath,
+            directoryInput.contentTypes,
+            directoryInput.scopes,
+            Format.DIRECTORY)
         if (isIncremental) {
             //处理增量编译
             processDirectoryInputIncremental(directoryInput, dest)
@@ -264,7 +264,7 @@ class LogTransform : Transform() {
                 var name = file.name
                 //在这里进行代码处理
                 if (name.endsWith(".class") && !name.startsWith("R\$")
-                        && "R.class" != name && "BuildConfig.class" != name) {
+                    && "R.class" != name && "BuildConfig.class" != name) {
 
                     val classReader = ClassReader(file.readBytes())
                     val classWriter = ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)

@@ -3,10 +3,10 @@ pluginManagement {
         google()
         mavenCentral()
         maven {
-            url uri("${rootProject.projectDir}")
+            url uri("${rootProject.projectDir}/plugin")
         }
         maven { url 'https://jitpack.io' }
-        gradlePluginPortal()
+//        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -15,6 +15,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
     }
 }
 rootProject.name = "study_asm"

@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     dependencies {
-        classpath 'plugin.asm_plugin:asm_plugin:1.0.4'
+        classpath 'asm_plugin:asm_plugin:1.0.6'
     }
 }
 plugins {

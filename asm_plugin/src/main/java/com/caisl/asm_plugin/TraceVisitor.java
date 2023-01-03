@@ -1,11 +1,10 @@
 package com.caisl.asm_plugin;
 
-import org.objectweb.asm.AnnotationVisitor;
-import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.Label;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.commons.AdviceAdapter;
+import org.gradle.internal.impldep.org.objectweb.asm.ClassVisitor;
+import org.gradle.internal.impldep.org.objectweb.asm.MethodVisitor;
+import org.gradle.internal.impldep.org.objectweb.asm.Opcodes;
+import org.gradle.internal.impldep.org.objectweb.asm.commons.AdviceAdapter;
+
 
 /**
  * 对继承自AppCompatActivity的Activity进行插桩
@@ -63,11 +62,11 @@ public class TraceVisitor extends ClassVisitor {
                 super.visitCode();
 
             }
-
-            @Override
-            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-                return super.visitAnnotation(desc, visible);
-            }
+//
+//            @Override
+//            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+//                return super.visitAnnotation(desc, visible);
+//            }
 
             @Override
             public void visitFieldInsn(int opcode, String owner, String name, String desc) {

@@ -6,9 +6,9 @@
   <!-- that they should prefer consuming it instead. -->
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>study_asm</groupId>
+  <groupId>asm_plugin</groupId>
   <artifactId>asm_plugin</artifactId>
-  <version>unspecified</version>
+  <version>1.0.5</version>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>

@@ -7,9 +7,9 @@ apply plugin: 'maven-publish'
 dependencies {
     compileOnly gradleApi()
     implementation localGroovy()
-    implementation 'com.android.tools.build:gradle:3.4.1'
-    implementation 'org.ow2.asm:asm:7.1'
-//    implementation 'org.ow2.asm:asm-commons:5.0.3'
+    implementation 'com.android.tools.build:gradle:7.2.1'
+    implementation 'org.ow2.asm:asm:8.0.1'
+    implementation 'org.ow2.asm:asm-commons:9.4'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
