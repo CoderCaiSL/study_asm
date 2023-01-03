@@ -2,8 +2,8 @@ package com.caisl.asm_plugin
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
-import jdk.internal.org.objectweb.asm.ClassReader
-import jdk.internal.org.objectweb.asm.ClassWriter
+import org.objectweb.asm.ClassReader
+import org.objectweb.asm.ClassWriter
 import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.FileOutputStream

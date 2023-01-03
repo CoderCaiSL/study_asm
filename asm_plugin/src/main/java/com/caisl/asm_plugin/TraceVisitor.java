@@ -2,9 +2,14 @@ package com.caisl.asm_plugin;
 
 
 import groovyjarjarasm.asm.Opcodes;
-import jdk.internal.org.objectweb.asm.ClassVisitor;
-import jdk.internal.org.objectweb.asm.MethodVisitor;
-import jdk.internal.org.objectweb.asm.commons.AdviceAdapter;
+
+import org.objectweb.asm.AnnotationVisitor;
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.commons.AdviceAdapter;
+
 
 /**
  * 对继承自AppCompatActivity的Activity进行插桩
@@ -62,11 +67,11 @@ public class TraceVisitor extends ClassVisitor {
                 super.visitCode();
 
             }
-//
-//            @Override
-//            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-//                return super.visitAnnotation(desc, visible);
-//            }
+
+            @Override
+            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                return super.visitAnnotation(desc, visible);
+            }
 
             @Override
             public void visitFieldInsn(int opcode, String owner, String name, String desc) {
