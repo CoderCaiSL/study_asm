@@ -4,9 +4,7 @@ package com.caisl.asm_plugin;
 import groovyjarjarasm.asm.Opcodes;
 
 import org.objectweb.asm.AnnotationVisitor;
-import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.commons.AdviceAdapter;
 
@@ -114,7 +112,6 @@ public class TraceVisitor extends ClassVisitor {
 
     /**
      * 当ASM进入类时回调
-     *
      * @param version
      * @param access
      * @param name       类名
