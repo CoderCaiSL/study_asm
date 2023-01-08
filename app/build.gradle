@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-apply plugin: 'asm_plugin.asm_plugin'
 
 android {
     compileSdkVersion 32
@@ -22,11 +21,34 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug{
+            apply plugin: 'asm_plugin.asm_plugin'
+            methodCallRecordExtension {
+                //    //日志打印测试，不知道方法描述怎么写可以在这里填写下方法名，build一下即可看到日志（模糊匹配）
+                methodTest = ["nativeCompress"]
+                //精准匹配，关注方法名、入参、返回参数、类名(仅适配非系统api调用的场景)
+                accurateMethodMap = [
+                        "android/telephony/TelephonyManager": ["getLine1Number()Ljava/lang/String;",
+                                                               "getDeviceId()Ljava/lang/String;",
+                                                               "getSimSerialNumber()Ljava/lang/String;",
+                                                               "getSubscriberId()Ljava/lang/String;"],
+                        "android/net/wifi/WifiInfo"         : ["getMacAddress()Ljava/lang/String;",
+                                                               "getSSID()Ljava/lang/String;"],
+                        "java/net/NetworkInterface"         : ["getInetAddresses()Ljava/util/Enumeration;"],
+                        "java/net/InetAddress"              : ["getHostAddress()Ljava/lang/String;"],
+                        "android/provider/Settings\$System" : ["getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"],
+                        "android/provider/Settings\$Secure" : ["getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"]
+                ]
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
