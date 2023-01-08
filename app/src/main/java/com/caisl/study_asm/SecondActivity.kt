@@ -8,4 +8,8 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
