@@ -15,9 +15,9 @@ class TracePlugin :  Plugin<Project> {
         project.afterEvaluate {
             println("=============start add kotlin============")
         }
-        val appExtension = project.extensions.findByType(
-            AppExtension::class.java
-        )
+//        val appExtension = project.extensions.findByType(
+//            AppExtension::class.java
+//        )
         //可以依据这个名字（methodCallRecordExtension），在依赖module的 gradle 中创建一些配置参数
         project.extensions.create(
             "methodCallRecordExtension",
@@ -26,9 +26,9 @@ class TracePlugin :  Plugin<Project> {
         val isDebug = isDebugBuildType(project)
         println("==============================TracePlugin Plugin apply========================================")
         if (isDebug){
-
-            val android = project.extensions.getByType(AppExtension::class.java)
-            android.registerTransform(
+//            val android = project.extensions.getByType(AppExtension::class.java)
+            val appExtension = project.properties["android"] as AppExtension
+            appExtension.registerTransform(
                 MethodCallRecordTransform(project),
                 Collections.EMPTY_LIST
             )

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.objectweb.asm.Opcodes.ASM6;
 import static org.objectweb.asm.Opcodes.ASM7;
 
 /**
@@ -18,7 +17,7 @@ import static org.objectweb.asm.Opcodes.ASM7;
 public final class MethodCallRecordClassAdapter extends ClassVisitor {
 
     private String className;
-    private String sdkClassPath = "com/caisl/asm_plugin/log/MethodRecordSDK";
+    private String sdkClassPath = "com/caisl/study_asm/log/MethodLogHelp";
 
     /**
      * 父类名
@@ -44,7 +43,7 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
         this.className = name;
         super.visit(version, access, name, signature, superName, interfaces);
-        this.superName = name;
+        this.superName = superName;
     }
 
 
@@ -106,42 +105,47 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
             }
             @Override
             protected void onMethodEnter() {
+                super.onMethodEnter();
                 if (isInject()) {
                     if ("onCreate".equals(outName)) {
-                        LogUtils.log("----------命中----->>>"+className + "_" + outName + "_call:" + outName);
+                        System.out.println("代码注入命中："+className + "_" + outName + "_call:" + outName+"_参数:"+desc);
                         mv.visitVarInsn(ALOAD, 0);//visitVarInsn获取变量 this
                         mv.visitMethodInsn(INVOKESTATIC,
-                                "com/caisl/study_asm/traceutils/TraceUtil",
+                                "com/caisl/study_asm/log/MethodLogHelp",
                                 "onActivityCreate", "(Landroid/app/Activity;)V",
                                 false);
                     } else if ("onDestroy".equals(outName)) {
-                        LogUtils.log("----------命中----->>>"+className + "_" + outName + "_call:" + outName);
+                        System.out.println("代码注入命中："+className + "_" + outName + "_call:" + outName+"_参数:"+desc);
                         mv.visitVarInsn(ALOAD, 0);
-                        mv.visitMethodInsn(INVOKESTATIC, "com/caisl/study_asm/traceutils/TraceUtil"
-                                , "onActivityDestroy", "(Landroid/app/Activity;)V", false);
+                        mv.visitMethodInsn(INVOKESTATIC,
+                                "com/caisl/study_asm/log/MethodLogHelp",
+                                 "onActivityDestroy", "(Landroid/app/Activity;)V", false);
+                    }else if ("testMethodCallOrFieldLod".equals(outName)){
+                        mv.visitVarInsn(ALOAD, 0);
+                        mv.visitMethodInsn(INVOKESTATIC,
+                                "com/caisl/study_asm/log/MethodLogHelp",
+                                "onActivityDestroy", "(Landroid/app/Activity;)V", false);
                     }
                 }
-                super.onMethodEnter();
-                if (MethodCallRecordExtension.methodTest != null && MethodCallRecordExtension.methodTest.contains(outName)) {
-                    LogUtils.log("----------测试打印数据---form 方法进入 -->>>>>"
-                            + "\n\naccess（方法修饰符）:" + access
-                            + "\n\noutName（方法名）:" + outName
-                            + "\n\ndesc（方法描述（就是（参数列表）返回值类型拼接））:" + desc
-                            + "\n\nsignature（方法泛型信息：）:" + signature
-                            + "\n\nclassName（当前扫描的类名）:" + className);
-                }
+//                if (MethodCallRecordExtension.methodTest != null && MethodCallRecordExtension.methodTest.contains(outName)) {
+//                    LogUtils.log("----------测试打印数据---form 方法进入 -->>>>>"
+//                            + "\n\naccess（方法修饰符）:" + access
+//                            + "\n\noutName（方法名）:" + outName
+//                            + "\n\ndesc（方法描述（就是（参数列表）返回值类型拼接））:" + desc
+//                            + "\n\nsignature（方法泛型信息：）:" + signature
+//                            + "\n\nclassName（当前扫描的类名）:" + className);
+//                }
                 //模糊匹配方法（忽略方法归属的类名）
-                if (MethodCallRecordExtension.fuzzyMethodMap != null
-                        && MethodCallRecordExtension.fuzzyMethodMap.containsKey(outName)
-                        && MethodCallRecordExtension.fuzzyMethodMap.get(outName)!=null) {
-                    if(MethodCallRecordExtension.fuzzyMethodMap.get(outName).size()>0){//有配置，就按照配置来匹配
-                        for (String item: MethodCallRecordExtension.fuzzyMethodMap.get(outName)) {
+                if (MethodCallRecordExtension.accurateMethodMap != null
+                        && MethodCallRecordExtension.accurateMethodMap.containsKey(outName)
+                        && MethodCallRecordExtension.accurateMethodMap.get(outName)!=null) {
+                    if(MethodCallRecordExtension.accurateMethodMap.get(outName).size()>0){//有配置，就按照配置来匹配
+                        for (String item: MethodCallRecordExtension.accurateMethodMap.get(outName)) {
                             if(item!=null&&item.equals(desc)){
                                 //命中，则插桩
                                 inputMethod(outName);
                                 break;
                             }
-
                         }
                     }else{
                         //没有配置就通配
@@ -149,7 +153,11 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
                         inputMethod(outName);
                     }
                 }
-                System.out.println("测试："+outName+"--"+desc+"//"+superName);
+                if (MethodCallRecordExtension.accurateMethodMap != null && !MethodCallRecordExtension.accurateMethodMap.isEmpty() &&
+                        MethodCallRecordExtension.accurateMethodMap.get(0) !=null){
+                    System.out.println("代码注入本地检查项："+MethodCallRecordExtension.accurateMethodMap.get(0).get(0));
+                }
+                System.out.println("代码注入源码检查项："+ outName+"参数:"+desc+"类名称："+className);
             }
 
             @Override
@@ -182,10 +190,37 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
              */
             @Override
             public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+                if("java/lang/System".equals(owner)&&("loadLibrary".equals(name)||"load".equals(name))&&"(Ljava/lang/String;)V".equals(descriptor)){
+                    isInvokeLoadLibrary.set(true);
+                    methodName[0] = name;
+                }
+                if (MethodCallRecordExtension.accurateMethodMap != null
+                        && MethodCallRecordExtension.accurateMethodMap.containsKey(outName)
+                        && MethodCallRecordExtension.accurateMethodMap.get(outName)!=null) {
+                    if(MethodCallRecordExtension.accurateMethodMap.get(outName).size()>0){//有配置，就按照配置来匹配
+                        for (String item: MethodCallRecordExtension.accurateMethodMap.get(outName)) {
+                            if(item!=null&&item.equals(desc)){
+                                //命中，则插桩
+                                inputMethod(outName);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if ("getDeviceId".contains(outName) && desc != null && desc.contains("TelephonyManager")){
+                    inputMethod(outName);
+                }
+                if ("getLine1Number".contains(outName) && desc != null && desc.contains("TelephonyManager")){
+                    inputMethod(outName);
+                }
                 super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
             }
 
             private void inputMethod(String recordMethodName) {
+                mv.visitLdcInsn(className + "_" + outName + "_call:" + recordMethodName);
+                mv.visitMethodInsn(INVOKESTATIC,
+                        "com/caisl/study_asm/log/MethodLogHelp",
+                        "onActivityPrintln", "(Ljava/lang/String;)V", false);
                 if (!isSdkPath() && recordMethodName != null) {
                     LogUtils.log("----------命中----->>>"+className + "_" + outName + "_call:" + recordMethodName);
                     //加载一个常量
