@@ -120,11 +120,6 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
                         mv.visitMethodInsn(INVOKESTATIC,
                                 "com/caisl/study_asm/log/MethodLogHelp",
                                  "onActivityDestroy", "(Landroid/app/Activity;)V", false);
-                    }else if ("testMethodCallOrFieldLod".equals(outName)){
-                        mv.visitLdcInsn(className + "_" + outName + "_call:" + desc);
-                        mv.visitMethodInsn(INVOKESTATIC,
-                                "com/caisl/study_asm/log/MethodLogHelp",
-                                "onActivityPrintln", "(Ljava/lang/String;)V", false);
                     }
                 }
 //                if (MethodCallRecordExtension.methodTest != null && MethodCallRecordExtension.methodTest.contains(outName)) {
@@ -136,23 +131,23 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
 //                            + "\n\nclassName（当前扫描的类名）:" + className);
 //                }
                 //模糊匹配方法（忽略方法归属的类名）
-                if (MethodCallRecordExtension.accurateMethodMap != null
-                        && MethodCallRecordExtension.accurateMethodMap.containsKey(outName)
-                        && MethodCallRecordExtension.accurateMethodMap.get(outName)!=null) {
-                    if(MethodCallRecordExtension.accurateMethodMap.get(outName).size()>0){//有配置，就按照配置来匹配
-                        for (String item: MethodCallRecordExtension.accurateMethodMap.get(outName)) {
-                            if(item!=null&&item.equals(desc)){
-                                //命中，则插桩
-                                inputMethod(outName);
-                                break;
-                            }
-                        }
-                    }else{
-                        //没有配置就通配
-                        //命中，则插桩
-                        inputMethod(outName);
-                    }
-                }
+//                if (MethodCallRecordExtension.accurateMethodMap != null
+//                        && MethodCallRecordExtension.accurateMethodMap.containsKey(outName)
+//                        && MethodCallRecordExtension.accurateMethodMap.get(outName)!=null) {
+//                    if(MethodCallRecordExtension.accurateMethodMap.get(outName).size()>0){//有配置，就按照配置来匹配
+//                        for (String item: MethodCallRecordExtension.accurateMethodMap.get(outName)) {
+//                            if(item!=null&&item.equals(desc)){
+//                                //命中，则插桩
+//                                inputMethod(outName);
+//                                break;
+//                            }
+//                        }
+//                    }else{
+//                        //没有配置就通配
+//                        //命中，则插桩
+//                        inputMethod(outName);
+//                    }
+//                }
 //                if (MethodCallRecordExtension.accurateMethodMap != null && !MethodCallRecordExtension.accurateMethodMap.isEmpty() &&
 //                        MethodCallRecordExtension.accurateMethodMap.get(0) !=null){
 //                    System.out.println("代码注入本地检查项："+MethodCallRecordExtension.accurateMethodMap.get(0).get(0));
