@@ -24,6 +24,8 @@ public class MethodLogHelp {
      */
     public static void recordMethodCall(String from) {
         android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈开始------------------------\n\n", "敏感函数"));
+        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------敏感函数方法名称：%s------------------------\n\n", from));
+        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈开始------------------------\n\n", "敏感函数"));
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         for(int i = 0; i < stackTraceElements.length; ++i) {
             android.util.Log.d("MethodRecordSDK", stackTraceElements[i].toString());
@@ -44,21 +46,27 @@ public class MethodLogHelp {
      * @param activity
      */
     public static void onActivityDestroy(Activity activity) {
-        Toast.makeText(activity
-                , activity.getClass().getName() + "call onDestroy---"
-                , Toast.LENGTH_LONG).show();
-//        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈开始------------------------\n\n", "敏感函数"));
-//        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-//        for(int i = 0; i < stackTraceElements.length; ++i) {
-//            android.util.Log.d("MethodRecordSDK", stackTraceElements[i].toString());
-//        }
-//        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈结束------------------------\n\n", "敏感函数"));
+//        Toast.makeText(activity
+//                , activity.getClass().getName() + "call onDestroy---"
+//                , Toast.LENGTH_LONG).show();
+        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈开始------------------------\n\n", "敏感函数"));
+        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈开始------------------------\n\n", "敏感函数"));
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        for(int i = 0; i < stackTraceElements.length; ++i) {
+            android.util.Log.d("MethodRecordSDK", stackTraceElements[i].toString());
+        }
+        android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈结束------------------------\n\n", "敏感函数"));
     }
 
     public static void onActivityPrintln(String name){
         try {
-            System.out.println("测试"+"测试");
-            System.out.println("方法名输出："+name+"");
+            android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------敏感函数方法名称：%s------------------------\n\n", name));
+            android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈开始------------------------\n\n", "敏感函数"));
+            StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+            for(int i = 0; i < stackTraceElements.length; ++i) {
+                android.util.Log.d("MethodRecordSDK", stackTraceElements[i].toString());
+            }
+            android.util.Log.e("MethodRecordSDK", String.format("\n\n----------------------%s调用堆栈结束------------------------\n\n", "敏感函数"));
         }catch (Exception e){
             e.printStackTrace();
         }
