@@ -9,8 +9,6 @@ methodCallRecordExtension {
     //精准匹配，关注方法名、入参、返回参数、类名(仅适配非系统api调用的场景)
     accurateMethodMap = [
 
-            "getDeviceId":["(Landroid/telephony/TelephonyManager;I)Ljava/lang/String;"],
-            "getLine1Number":["(Landroid/telephony/TelephonyManager;I)Ljava/lang/String;"],
             "android/telephony/TelephonyManager": ["getLine1Number()Ljava/lang/String;",
                                                    "getDeviceId()Ljava/lang/String;",
                                                    "getSimSerialNumber()Ljava/lang/String;",
@@ -64,4 +62,5 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
 }

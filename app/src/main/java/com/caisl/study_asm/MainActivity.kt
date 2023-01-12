@@ -15,7 +15,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import java.lang.StringBuilder
 import java.net.NetworkInterface
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity,SecondActivity::class.java))
         }
         findViewById<View>(R.id.btn_div).setOnClickListener {
-            testMethodCallOrFieldLod()
+            getAndroidPrivateMethod()
         }
     }
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         return telephonyManager.line1Number
     }
 
-    private fun testMethodCallOrFieldLod() {
+    private fun getAndroidPrivateMethod() {
         try {
             ActivityCompat.requestPermissions(
                 this@MainActivity,

@@ -236,8 +236,8 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
 //                        "com/caisl/study_asm/log/MethodLogHelp",
 //                        "onActivityPrintln", "(Ljava/lang/String;)V", false);
                 if (!isSdkPath() && recordMethodName != null) {
-                    LogUtils.log("----------命中----->>>"+className + "_" + outName + "_call:" + recordMethodName);
-                    mv.visitLdcInsn(className + "_" + outName + "_call:" + recordMethodName);
+                    LogUtils.log("----------命中----->>>"+className + ">>" + outName + ">>" + recordMethodName);
+                    mv.visitLdcInsn(className + ">>" + outName + ">>" + recordMethodName);
                     mv.visitMethodInsn(INVOKESTATIC,
                             "com/caisl/study_asm/log/MethodLogHelp",
                             "onActivityPrintln", "(Ljava/lang/String;)V", false);
