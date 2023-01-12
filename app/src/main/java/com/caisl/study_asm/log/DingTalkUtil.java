@@ -22,8 +22,6 @@ public class DingTalkUtil {
 
 //    public static String DING_TALK_URL = "https://oapi.dingtalk.com/robot/send?access_token=deabd312af5e63b6fbfbdc294fa36e993e6caa6b1f8f7728f18eaaf4044341bc";
 
-
-
     /**
      * 发送POST请求，参数是Map, contentType=x-www-form-urlencoded
      * @return

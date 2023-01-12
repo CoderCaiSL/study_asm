@@ -8,17 +8,34 @@ methodCallRecordExtension {
     methodTest = ["nativeCompress"]
     //精准匹配，关注方法名、入参、返回参数、类名(仅适配非系统api调用的场景)
     accurateMethodMap = [
-
-            "android/telephony/TelephonyManager": ["getLine1Number()Ljava/lang/String;",
-                                                   "getDeviceId()Ljava/lang/String;",
-                                                   "getSimSerialNumber()Ljava/lang/String;",
-                                                   "getSubscriberId()Ljava/lang/String;"],
-            "android/net/wifi/WifiInfo"         : ["getMacAddress()Ljava/lang/String;",
-                                                   "getSSID()Ljava/lang/String;"],
-            "java/net/NetworkInterface"         : ["getInetAddresses()Ljava/util/Enumeration;"],
-            "java/net/InetAddress"              : ["getHostAddress()Ljava/lang/String;"],
-            "android/provider/Settings\$System" : ["getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"],
-            "android/provider/Settings\$Secure" : ["getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"]
+            "android/app/ActivityManager":["getRunningAppProcesses()Ljava/util/List;",
+                                            "getRunningServices(I)Ljava/util/List;",
+                                            ],
+            "android/content/pm/PackageManager":[
+                    "queryIntentActivities(Landroid/content/Intent;I)Ljava/util/List;"
+            ],
+            "android/telephony/TelephonyManager": [
+                    "getLine1Number()Ljava/lang/String;",
+                    "getDeviceId()Ljava/lang/String;",
+                    "getSimSerialNumber()Ljava/lang/String;",
+                    "getSubscriberId()Ljava/lang/String;"
+            ],
+            "android/net/wifi/WifiInfo"         : [
+                    "getMacAddress()Ljava/lang/String;",
+                    "getSSID()Ljava/lang/String;"
+            ],
+            "java/net/NetworkInterface"         : [
+                    "getInetAddresses()Ljava/util/Enumeration;"
+            ],
+            "java/net/InetAddress"              : [
+                    "getHostAddress()Ljava/lang/String;"
+            ],
+            "android/provider/Settings\$System" : [
+                    "getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"
+            ],
+            "android/provider/Settings\$Secure" : [
+                    "getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;"
+            ]
     ]
 }
 android {

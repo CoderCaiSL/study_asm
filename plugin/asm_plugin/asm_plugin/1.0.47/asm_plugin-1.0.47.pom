@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>asm_plugin</groupId>
   <artifactId>asm_plugin</artifactId>
-  <version>1.0.42</version>
+  <version>1.0.47</version>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
