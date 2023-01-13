@@ -10,11 +10,8 @@ import java.util.*
  * @author: CaiSongL
  * @date: 2023/1/2 22:55
  */
-class TracePlugin :  Plugin<Project> {
+class AndroidPrivatePlugin :  Plugin<Project> {
     override fun apply(project: Project) {
-        project.afterEvaluate {
-            println("=============start add kotlin============")
-        }
 //        val appExtension = project.extensions.findByType(
 //            AppExtension::class.java
 //        )
@@ -24,14 +21,17 @@ class TracePlugin :  Plugin<Project> {
             AndroidPrivateRecordExtension::class.java
         )
         val isDebug = isDebugBuildType(project)
-        println("==============================TracePlugin Plugin apply========================================")
         if (isDebug){
+            println("==============================隐私方法检测注入开始========================================")
 //            val android = project.extensions.getByType(AppExtension::class.java)
             val appExtension = project.properties["android"] as AppExtension
             appExtension.registerTransform(
                 AndroidPrivateRecordTransform(project),
                 Collections.EMPTY_LIST
             )
+            project.afterEvaluate {
+                println("==============================隐私方法检测注入结束========================================")
+            }
 //            android.registerTransform(MethodCallRecordTransform())
         }else{
             println("==============================检测正式包：跳过字节码注入========================================")
