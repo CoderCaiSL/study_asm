@@ -7,7 +7,7 @@ import org.objectweb.asm.ClassWriter;
 /**
  * Created by Quinn on 09/07/2017.
  */
-public final class MethodCallRecordWeaver extends BaseWeaver {
+public final class AndroidPrivateRecordWeaver extends BaseWeaver {
 
     /**
      * 判断是否需要拦截处理此class（从transform调用过来的）
@@ -21,7 +21,7 @@ public final class MethodCallRecordWeaver extends BaseWeaver {
 
     @Override
     protected ClassVisitor wrapClassWriter(ClassWriter classWriter) {
-        return new MethodCallRecordClassAdapter(classWriter);
+        return new AndroidPrivateRecordClassAdapter(classWriter);
     }
 
 }

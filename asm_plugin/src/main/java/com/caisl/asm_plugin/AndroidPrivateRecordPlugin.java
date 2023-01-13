@@ -13,12 +13,12 @@ import java.util.Properties;
 /**
  * https://github.com/bin2415/methodHook/
  */
-public class MethodCallRecordPlugin implements Plugin<Project> {
+public class AndroidPrivateRecordPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         AppExtension appExtension = project.getExtensions().findByType(AppExtension.class);
         //可以依据这个名字（methodCallRecordExtension），在依赖module的 gradle 中创建一些配置参数
-        project.getExtensions().create("methodCallRecordExtension", MethodCallRecordExtension.class);
+        project.getExtensions().create("methodCallRecordExtension", AndroidPrivateRecordExtension.class);
         boolean usePlugin = false;
         Properties properties = new Properties();
         if (project.getRootProject().file("gradle.properties").exists()) {
@@ -32,7 +32,7 @@ public class MethodCallRecordPlugin implements Plugin<Project> {
 
         if (appExtension != null && usePlugin) {
             System.out.println("-------------注册 特定方法监控 插件--------------");
-            appExtension.registerTransform(new MethodCallRecordTransform(project), Collections.EMPTY_LIST);
+            appExtension.registerTransform(new AndroidPrivateRecordTransform(project), Collections.EMPTY_LIST);
         } else {
             System.out.println("-------------关闭 特定方法监控 插件--------------");
         }

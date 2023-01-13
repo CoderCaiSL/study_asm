@@ -16,14 +16,14 @@ import java.util.Collection;
  * 允许第三方 Plugin 在打包 dex 文件之前的编译过程中操作 .class 文件，
  * 我们做的就是实现Transform进行.class文件遍历拿到所有方法，修改完成对原文件进行替换。
  */
-public class MethodCallRecordTransform extends HunterTransform {
+public class AndroidPrivateRecordTransform extends HunterTransform {
     private Project project;
 
 
-    public MethodCallRecordTransform(Project project) {
+    public AndroidPrivateRecordTransform(Project project) {
         super(project);
         this.project = project;
-        this.bytecodeWeaver = new MethodCallRecordWeaver();
+        this.bytecodeWeaver = new AndroidPrivateRecordWeaver();
     }
 
 

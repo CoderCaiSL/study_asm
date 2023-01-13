@@ -14,7 +14,7 @@ import static org.objectweb.asm.Opcodes.ASM7;
  * @author: CaiSongL
  * @date: 2023/1/8 22:14
  */
-public final class MethodCallRecordClassAdapter extends ClassVisitor {
+public final class AndroidPrivateRecordClassAdapter extends ClassVisitor {
 
     private String className;
     private String sdkClassPath = "com/caisl/study_asm/log/MethodLogHelp";
@@ -24,7 +24,7 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
      */
     private String superName;
 
-    MethodCallRecordClassAdapter(final ClassVisitor cv) {
+    AndroidPrivateRecordClassAdapter(final ClassVisitor cv) {
         //注意这里的版本号要留意，不同版本可能会抛出异常，仔细观察异常
         super(ASM7, cv);
     }
@@ -186,7 +186,7 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
             @Override
             public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
 
-                if (MethodCallRecordExtension.methodTest != null && MethodCallRecordExtension.methodTest.contains(name)) {
+                if (AndroidPrivateRecordExtension.methodTest != null && AndroidPrivateRecordExtension.methodTest.contains(name)) {
                     LogUtils.log("----------测试打印数据---方法调用（与onMethodEnter 可能存在重复打印） -->>>>>"
                             + "\n\nopcode（方法调用指令）:" + opcode
                             + "\n\nowner（方法归属类）:" + owner
@@ -202,11 +202,11 @@ public final class MethodCallRecordClassAdapter extends ClassVisitor {
                     isInvokeLoadLibrary.set(true);
                     methodName[0] = name;
                 }
-                if (MethodCallRecordExtension.accurateMethodMap != null
-                        && MethodCallRecordExtension.accurateMethodMap.containsKey(owner)
-                        && MethodCallRecordExtension.accurateMethodMap.get(owner)!=null) {
-                    if(MethodCallRecordExtension.accurateMethodMap.get(owner).size()>0){//有配置，就按照配置来匹配
-                        for (String item: MethodCallRecordExtension.accurateMethodMap.get(owner)) {
+                if (AndroidPrivateRecordExtension.accurateMethodMap != null
+                        && AndroidPrivateRecordExtension.accurateMethodMap.containsKey(owner)
+                        && AndroidPrivateRecordExtension.accurateMethodMap.get(owner)!=null) {
+                    if(AndroidPrivateRecordExtension.accurateMethodMap.get(owner).size()>0){//有配置，就按照配置来匹配
+                        for (String item: AndroidPrivateRecordExtension.accurateMethodMap.get(owner)) {
                             if(item!=null&&item.equals(name+descriptor)){
                                 //命中，则插桩
                                 inputMethod(name,owner);
