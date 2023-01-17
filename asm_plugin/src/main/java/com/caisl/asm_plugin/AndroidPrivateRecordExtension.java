@@ -7,6 +7,17 @@ import java.util.Map;
 
 public class AndroidPrivateRecordExtension {
 
+    /**
+     * 分别是需要注入调用的类的完整路径名称
+     * 需要注入所调用的方法名称
+     * 需要注入的方法的参数字节码
+     *
+     * 例如
+     * @classPath : com/caisl/study_asm/log/MethodLogHelp
+     * @methodName : onActivityPrintln
+     * @parameterName : (Ljava/lang/String;)V
+     */
+    public static LogPrintlnHelp logPrintlnHelp = null;
 
     /**
      * 精准匹配：需要方法名、方法描述、归属类严格匹配（这个适用于严格匹配类名和方法的，不适用于点击回调一类的，点击回调是在系统api内部调用的，插桩不生效）

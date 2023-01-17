@@ -17,7 +17,7 @@ class AndroidPrivatePlugin :  Plugin<Project> {
 //        )
         //可以依据这个名字（methodCallRecordExtension），在依赖module的 gradle 中创建一些配置参数
         project.extensions.create(
-            "methodCallRecordExtension",
+            "androidPrivateRecordExtension",
             AndroidPrivateRecordExtension::class.java
         )
         val isDebug = isDebugBuildType(project)

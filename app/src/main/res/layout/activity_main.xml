@@ -35,10 +35,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
+        android:id="@+id/btn_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取wifi进行代码入侵注入"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
         android:id="@+id/btn_net"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="获取网络数据码进行代码入侵注入"
+        android:text="获取网络数据进行代码入侵注入"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,10 +80,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
-        android:id="@+id/btn_phone"
+        android:id="@+id/btn_blue_tooth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="获取手机卡进行代码入侵注入"
+        android:text="获取蓝牙信息进行代码入侵注入"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +93,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="获取摄像头进行代码入侵注入"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_jq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取面板剪切数据进行代码入侵注入"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btn_jc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取进程信息进行代码入侵注入"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

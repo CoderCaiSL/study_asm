@@ -69,11 +69,11 @@ public class MethodLogHelp {
             String[] nameAndCall = name.split(">>");
             if (nameAndCall.length > 1){
                 logStringBuilder.append("### 监控系统发现异常：(金十数据)\n\n");
-                logStringBuilder.append("###### 调用敏感函数方法名称：\n");
+                logStringBuilder.append("#### 调用敏感函数方法名称：\n");
                 logStringBuilder.append(String.format("<font color=#FF0000>%s</font>\n\n",nameAndCall[2]+"/"+nameAndCall[3]));
-                logStringBuilder.append("###### 敏感函数调用的类名：\n");
+                logStringBuilder.append("#### 敏感函数调用的类名：\n");
                 logStringBuilder.append(String.format("%s\n\n", nameAndCall[0]));
-                logStringBuilder.append("###### 敏感函数调用的方法名：\n");
+                logStringBuilder.append("#### 敏感函数调用的方法名：\n");
                 logStringBuilder.append(String.format("%s\n\n", nameAndCall[1]));
             }
             StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();

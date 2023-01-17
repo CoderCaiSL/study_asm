@@ -1,13 +1,27 @@
+import com.caisl.asm_plugin.LogPrintlnHelp
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
 apply plugin: 'asm_plugin.asm_plugin'
-methodCallRecordExtension {
-    //    //日志打印测试，不知道方法描述怎么写可以在这里填写下方法名，build一下即可看到日志（模糊匹配）
-    methodTest = ["nativeCompress"]
+androidPrivateRecordExtension {
+    logPrintlnHelp = new LogPrintlnHelp(
+            "com/caisl/study_asm/log/MethodLogHelp",
+            "onActivityPrintln",
+            "(Ljava/lang/String;)V"
+    )
+    //不知道方法描述怎么写可以在这里填写下方法名，build一下即可看到日志（模糊匹配）
+    methodTest = ["requestPermissions"]
     //精准匹配，关注方法名、入参、返回参数、类名(仅适配非系统api调用的场景)
     accurateMethodMap = [
+            "android/hardware/SensorManager":[
+                    "getDefaultSensor(I)Landroid/hardware/Sensor;"
+            ],
+            "android/bluetooth/BluetoothAdapter":[
+                    "getAddress()Ljava/lang/String;",
+                    "getName()Ljava/lang/String;",
+            ],
             "android/app/ActivityManager":["getRunningAppProcesses()Ljava/util/List;",
                                             "getRunningServices(I)Ljava/util/List;",
                                             ],
